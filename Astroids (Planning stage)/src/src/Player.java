@@ -4,7 +4,7 @@ public class Player {
 	private GameEngine gEng;
 	private int launchPause = 5;
 	private int missileCount = 3;
-	
+	private PlayerPlane actor;
 	private boolean active;
 	//Make seprate game object for physics and GFX!!!
 	
@@ -12,6 +12,7 @@ public class Player {
 	
 	public Player(GameEngine gEngine) {
 		this.gEng = gEngine;
+		actor = new PlayerPlane(this.gEng);
 	}
 	public void initializePlayer() {
 		// 
@@ -30,22 +31,21 @@ public class Player {
 			// the missile comes from a "base"
 			// for now the base is the middle screen
 			if (StdDraw.isKeyPressed(65)) {
-				Vec2d target = new Vec2d(StdDraw.mouseX(), StdDraw.mouseY());
+				Vec2d target = new Vec2d(-0.1,0);
 				
 				System.out.println("Firing left");
 				launchPause = 5;
 
 			}
 			if (StdDraw.isKeyPressed(83)) {
-				Vec2d target = new Vec2d(StdDraw.mouseX(), StdDraw.mouseY());
 				
 				System.out.println("Firing center");
 				launchPause = 5;
 
 			}
 			if (StdDraw.isKeyPressed(68)) {
-				Vec2d target = new Vec2d(StdDraw.mouseX(), StdDraw.mouseY());
-			
+				Vec2d target = new Vec2d(0.1,0);
+				
 				System.out.println("Firing right");			
 				launchPause = 5;
 			}
