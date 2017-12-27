@@ -17,6 +17,7 @@ public class Player {
 	public void initializePlayer() {
 		// 
 		int a = 1;
+		this.gEng.add(actor);
 	}
 	
 	public void update () {
@@ -31,7 +32,7 @@ public class Player {
 			// the missile comes from a "base"
 			// for now the base is the middle screen
 			if (StdDraw.isKeyPressed(65)) {
-				Vec2d target = new Vec2d(-0.1,0);
+				Vec2d target = new Vec2d(-0.5,0);
 				actor.move(target);
 				System.out.println("Firing left");
 				launchPause = 5;
@@ -44,7 +45,7 @@ public class Player {
 
 			}
 			if (StdDraw.isKeyPressed(68)) {
-				Vec2d target = new Vec2d(0.1,0);
+				Vec2d target = new Vec2d(0.5,0);
 				actor.move(target);
 				System.out.println("Firing right");			
 				launchPause = 5;

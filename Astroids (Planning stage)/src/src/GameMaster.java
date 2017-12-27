@@ -47,8 +47,8 @@ public class GameMaster {
 			scoretext.setMsg("SCORE: " + score);
 		}
 		if (!anyCitiesLeft && phase == 2) {
-			this.startPhase3();
-			this.changePhase(3);
+			//this.startPhase3();
+			//this.changePhase(3);
 		}
 		if (phase == 3) {
 			if(StdDraw.isKeyPressed(88)) {
@@ -74,6 +74,7 @@ public class GameMaster {
 
 		Player hansolo = new Player(eng);
 		eng.setPlayer(hansolo);
+		hansolo.initializePlayer();
 
 		Vec2d[] targets = new Vec2d[9];
 		double gutter = 1.0;
