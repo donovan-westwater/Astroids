@@ -12,7 +12,7 @@ public class Player {
 	
 	public Player(GameEngine gEngine) {
 		this.gEng = gEngine;
-		actor = new PlayerPlane(this.gEng);
+		actor = new PlayerPlane(gEngine);
 	}
 	public void initializePlayer() {
 		// 
@@ -32,7 +32,7 @@ public class Player {
 			// for now the base is the middle screen
 			if (StdDraw.isKeyPressed(65)) {
 				Vec2d target = new Vec2d(-0.1,0);
-				
+				actor.move(target);
 				System.out.println("Firing left");
 				launchPause = 5;
 
@@ -45,7 +45,7 @@ public class Player {
 			}
 			if (StdDraw.isKeyPressed(68)) {
 				Vec2d target = new Vec2d(0.1,0);
-				
+				actor.move(target);
 				System.out.println("Firing right");			
 				launchPause = 5;
 			}
