@@ -6,7 +6,8 @@ public class PlayerPlane extends GameObject{
 	
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
-	private Vec2d bearing = new Vec2d this.getPolarDirection();
+	private Vec2d bearing;
+	private double polAngle = this.getPolarDirection()[1];
 	private static PhyBox hitBox = new PhyBox(new Vec2d(0.25,0),new Vec2d(1,-1),1,0);
 	private static GfxPlane sprite = new GfxPlane(hitBox.getLoc());
 	public PlayerPlane(GameEngine gEng) {
@@ -32,7 +33,9 @@ public class PlayerPlane extends GameObject{
 	//WIP: Doesnt work when stationary
 	public void rotate(double angle) {
 		double[] polcord = this.getPolarDirection();
-		double newAng = angle + polcord[1];
+		double newAng = polAngle + angle;
+		polAngle = newAng;
+		System.out.println(polAngle);
 		double radius = polcord[0];
 		double storX = Math.cos(newAng) * radius;
 		double storY = Math.sin(newAng) * radius;
