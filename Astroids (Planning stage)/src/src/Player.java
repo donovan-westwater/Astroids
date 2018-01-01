@@ -12,7 +12,7 @@ public class Player {
 	
 	public Player(GameEngine gEngine) {
 		this.gEng = gEngine;
-		actor = new PlayerPlane(gEngine);
+		this.actor = new PlayerPlane(gEngine);
 	}
 	public void initializePlayer() {
 		// 
@@ -43,6 +43,7 @@ public class Player {
 				
 				System.out.println("Firing center");
 				launchPause = 5;
+				actor.move();
 
 			}
 			if (StdDraw.isKeyPressed(68)) {

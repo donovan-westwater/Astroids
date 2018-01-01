@@ -1,13 +1,17 @@
+import java.awt.Color;
 import java.lang.*;
 public class PlayerPlane extends GameObject{
+	//Not using bearing for direction
+	//not warning physics engine
 	
-	private static GfxCircle sprite = new GfxCircle(1);
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
+	private Vec2d bearing = new Vec2d this.getPolarDirection();
 	private static PhyBox hitBox = new PhyBox(new Vec2d(0.25,0),new Vec2d(1,-1),1,0);
+	private static GfxPlane sprite = new GfxPlane(hitBox.getLoc());
 	public PlayerPlane(GameEngine gEng) {
 		super(sprite,hitBox,gEng);
-		sprite = (GfxCircle)this.getGfxObj();
+		sprite = (GfxPlane)this.getGfxObj();
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -33,15 +37,16 @@ public class PlayerPlane extends GameObject{
 		double storX = Math.cos(newAng) * radius;
 		double storY = Math.sin(newAng) * radius;
 		Vec2d answer = new Vec2d(storX,storY);
-		this.getpObj().setDir(answer);
+		this.bearing = answer;
+		System.out.println("Bearing: " + storX + " " + storY);
 		//Vec2d answer = new Vec2d(storX,storY);
 		//return answer;
 		
 	}
 	//Accelerates player object, should change to only accelerate in correct direction
-	public void move(Vec2d dir) {
+	public void move() {
 		
-		this.getpObj().setDir(dir);
+		this.getpObj().setDir(bearing);
 	}
 	public void update() {
 		

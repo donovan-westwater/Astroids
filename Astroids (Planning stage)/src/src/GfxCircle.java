@@ -24,4 +24,18 @@ public class GfxCircle extends GfxObject{
 	public void setSize(double s){
 		size = s;
 	}
+	public static void main(String[] args){
+		// TODO Auto-generated method stub
+		double minX = -5.0;
+		double minY = -5.0;
+		double maxX = 5.0;
+		double maxY = 5.0;
+		
+		StdDraw.setCanvasSize(800, 800);
+		StdDraw.setXscale(minX, maxX);
+		StdDraw.setYscale(minY, maxY);
+		GfxCircle test = new GfxCircle(1);
+		test.setGraphicPosition(new Vec2d(0,0));
+		test.draw();
+}
 }
