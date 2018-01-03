@@ -32,7 +32,7 @@ public class Player {
 			// the missile comes from a "base"
 			// for now the base is the middle screen
 			if (StdDraw.isKeyPressed(65)) {
-				actor.rotate(0.25);
+				actor.rotate(0.5);
 				//Vec2d target = new Vec2d(-0.5,0);
 				//actor.move(target);
 				System.out.println("Firing left");
@@ -47,7 +47,7 @@ public class Player {
 
 			}
 			if (StdDraw.isKeyPressed(68)) {
-				actor.rotate(-0.25);
+				actor.rotate(-0.5);
 				//Vec2d target = new Vec2d(0.5,0);
 				//actor.move(target);
 				System.out.println("Firing right");			

@@ -1,6 +1,5 @@
-/.DS_Store
-/data/
 /edu/
+/javazoom/
 /Box.class
 /GameEngine.class
 /GameEngineTest.class
@@ -17,10 +16,10 @@
 /GfxEngine.class
 /GfxGround.class
 /GfxObject.class
+/GfxPlane.class
 /GfxSprite.class
 /GfxUI.class
 /PhyBox.class
-/javazoom/
 /PhyCircle.class
 /PhyObject.class
 /PhysicsEngine.class
@@ -28,12 +27,7 @@
 /PhysicsEvent.class
 /Player.class
 /PlayerMissle.class
+/PlayerPlane.class
 /Sound$1.class
 /Sound.class
 /Vec2d.class
-/test
-/test.class
-/playerPlane.class
-/PlayerPlane.class
-/GfxPlane
-/GfxPlane.class

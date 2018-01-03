@@ -6,9 +6,9 @@ public class PlayerPlane extends GameObject{
 	
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
-	private Vec2d bearing;
+	private Vec2d bearing = new Vec2d(0,0.25);
 	private double polAngle = this.getPolarDirection()[1];
-	private static PhyBox hitBox = new PhyBox(new Vec2d(0.25,0),new Vec2d(1,-1),1,0);
+	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.25),new Vec2d(1,-1),1,0);
 	private static GfxPlane sprite = new GfxPlane(hitBox.getLoc());
 	public PlayerPlane(GameEngine gEng) {
 		super(sprite,hitBox,gEng);
@@ -30,6 +30,7 @@ public class PlayerPlane extends GameObject{
 	//returns the rotatation of the player object when given the angle to rotate by converting vector into polar coordinates
 	//Currently set to void
 	//Should also only rotate the spirte, might move code from here into moving the future sprite
+	
 	//WIP: Doesnt work when stationary
 	public void rotate(double angle) {
 		double[] polcord = this.getPolarDirection();
@@ -42,9 +43,12 @@ public class PlayerPlane extends GameObject{
 		Vec2d answer = new Vec2d(storX,storY);
 		this.bearing = answer;
 		System.out.println("Bearing: " + storX + " " + storY);
+		//This is the part that is broken
+		System.out.println(polAngle);
+		sprite.setGfxbearing(polAngle+(3*Math.PI/2));
 		//Vec2d answer = new Vec2d(storX,storY);
 		//return answer;
-		
+		 
 	}
 	//Accelerates player object, should change to only accelerate in correct direction
 	public void move() {
