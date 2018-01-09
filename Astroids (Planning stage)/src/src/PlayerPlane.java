@@ -59,7 +59,8 @@ public class PlayerPlane extends GameObject{
 	//Accelerates player object, should change to only accelerate in correct direction
 	public void move() {
 		System.out.println("Direction in move(): " + this.getpObj().getDir().getX()+" "+this.getpObj().getDir().getY());
-		this.getpObj().setDir(this.getBearing());
+		this.getpObj().getDir().setX(bearing.getX());
+		this.getpObj().getDir().setY(bearing.getY());
 		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
 	public void update() {
