@@ -35,13 +35,13 @@ public class Player {
 				actor.rotate(0.5);
 				//Vec2d target = new Vec2d(-0.5,0);
 				//actor.move(target);
-				System.out.println("Firing left");
+				System.out.println("rotate left");
 				launchPause = 5;
 
 			}
 			if (StdDraw.isKeyPressed(87)) {
-				
-				System.out.println("Firing center");
+				// move forward
+				System.out.println("move forward");
 				launchPause = 5;
 				actor.move();
 
@@ -50,8 +50,16 @@ public class Player {
 				actor.rotate(-0.5);
 				//Vec2d target = new Vec2d(0.5,0);
 				//actor.move(target);
-				System.out.println("Firing right");			
+				System.out.println("rotate right");			
 				launchPause = 5;
+			}
+			if(StdDraw.isKeyPressed(86)) {
+				System.out.println("my physical direction is");
+				System.out.println(actor.getpObj().getDir().getX()+" "+actor.getpObj().getDir().getY());
+				System.out.println("My bearing is: ");
+				System.out.println(actor.getBearing().getX()+" "+actor.getBearing().getY());
+				launchPause = 5;
+				
 			}
 			if (launchPause > 5) launchPause = 5;
 

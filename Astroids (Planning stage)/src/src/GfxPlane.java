@@ -1,7 +1,8 @@
 import java.awt.Color;
 
 import edu.princeton.cs.algs4.StdDraw;
-//GET THIS OBJECT TO ANIMATE!!!! AAAAAAAAH
+
+//direcction desyncs from graphical bearing, fix this by using bearing instead of physic pos to contruct visual
 public class GfxPlane extends GfxObject {
 	private Color col;
 	private double[] xCords = {0,.5,2,2,2.5,2.5};
@@ -49,7 +50,7 @@ public class GfxPlane extends GfxObject {
 	}
 	public void shiftFormat() {
 		//This section should incorporate previous shape instead of a rigidly defined one
-		shift = this.loc;
+		shift = this.loc; // begins with gfx location
 		xCords[0] = 0.0;
 		xCords[1] = 0.5;
 		xCords[2] = -0.5;

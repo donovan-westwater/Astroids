@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 import edu.princeton.cs.algs4.StdDraw;
-
+//Need to edit physics engine to allow wrapping 
 public class PhysicsEngine {
 	private double minX;
 	private double maxX;
@@ -75,12 +75,15 @@ public class PhysicsEngine {
 				// System.out.println("Beyond x bound of min " + minX + " and max " + maxX);
 				newVecA.setX(-newVecA.getX());
 				boxA.setDir(newVecA);
+				// System.out.println("I BOUNCED OFF THE WALL!");
 			}
 			if(boxA.getLoc().getY() + newVecA.getY() < minY ||
 					boxA.getLoc().getY() + newVecA.getY() > maxY) {
 				newVecA.setY(-newVecA.getY());
 				boxA.setDir(newVecA);
+				// System.out.println("I BOUNCED OFF THE WALL!");
 			}			
+			
 		}
 	}
 

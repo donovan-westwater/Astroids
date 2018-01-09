@@ -4,6 +4,7 @@ public class PlayerPlane extends GameObject{
 	//Not using bearing for direction
 	//not warning physics engine
 	
+	
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
 	private Vec2d bearing = new Vec2d(0,0.25);
@@ -16,8 +17,12 @@ public class PlayerPlane extends GameObject{
 		
 		// TODO Auto-generated constructor stub
 	}
-	public Vec2d getMovement() {
-		return this.movement;
+	public Vec2d getBearing() {
+		return this.bearing;
+	}
+	public void setBearing(Vec2d newDir) {
+		System.out.println("Break here");
+		this.bearing = newDir;
 	}
 	
 	public double[] getPolarDirection(){
@@ -33,6 +38,7 @@ public class PlayerPlane extends GameObject{
 	
 	//WIP: Doesnt work when stationary
 	public void rotate(double angle) {
+		System.out.println("Rotating");
 		double[] polcord = this.getPolarDirection();
 		double newAng = polAngle + angle;
 		polAngle = newAng;
@@ -41,7 +47,7 @@ public class PlayerPlane extends GameObject{
 		double storX = Math.cos(newAng) * radius;
 		double storY = Math.sin(newAng) * radius;
 		Vec2d answer = new Vec2d(storX,storY);
-		this.bearing = answer;
+		this.setBearing(answer);
 		System.out.println("Bearing: " + storX + " " + storY);
 		//This is the part that is broken
 		System.out.println(polAngle);
@@ -52,8 +58,9 @@ public class PlayerPlane extends GameObject{
 	}
 	//Accelerates player object, should change to only accelerate in correct direction
 	public void move() {
-		
-		this.getpObj().setDir(bearing);
+		System.out.println("Direction in move(): " + this.getpObj().getDir().getX()+" "+this.getpObj().getDir().getY());
+		this.getpObj().setDir(this.getBearing());
+		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
 	public void update() {
 		
