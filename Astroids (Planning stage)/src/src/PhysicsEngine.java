@@ -58,8 +58,11 @@ public class PhysicsEngine {
 				}
 				PhyBox box = (PhyBox) obj;
 				//replace this with if statement using wrap code
-				//this.reflectOffBounds(box);
-				this.wrapAroundBounds(box);
+				if(wrapToggle) {
+					this.wrapAroundBounds(box);
+				}else{
+				this.reflectOffBounds(box);
+				}
 				box.setLoc(Vec2d.add(box.getLoc(), box.getDir()));
 				
 				obj.setFrame(frame);
