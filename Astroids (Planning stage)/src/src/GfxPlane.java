@@ -2,7 +2,6 @@ import java.awt.Color;
 
 import edu.princeton.cs.algs4.StdDraw;
 
-//direcction desyncs from graphical bearing, fix this by using bearing instead of physic pos to contruct visual
 public class GfxPlane extends GfxObject {
 	private Color col;
 	private double[] xCords = {0,.5,2,2,2.5,2.5};
