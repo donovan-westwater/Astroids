@@ -1,8 +1,7 @@
 import java.awt.Color;
 import java.lang.*;
 public class PlayerPlane extends GameObject{
-	//Not using bearing for direction
-	//not warning physics engine
+	//need to add momentium to this section
 	
 	
 	private Vec2d spawn = new Vec2d(0,0);

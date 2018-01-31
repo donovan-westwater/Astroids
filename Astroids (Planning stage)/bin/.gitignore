@@ -1,5 +1,3 @@
-/edu/
-/javazoom/
 /Box.class
 /GameEngine.class
 /GameEngineTest.class
@@ -11,6 +9,7 @@
 /GameObjectBox.class
 /GameObjectWall.class
 /GfxAmmo.class
+/GfxAstroid.class
 /GfxBox.class
 /GfxCircle.class
 /GfxEngine.class
@@ -31,3 +30,5 @@
 /Sound$1.class
 /Sound.class
 /Vec2d.class
+/edu/
+/javazoom/
