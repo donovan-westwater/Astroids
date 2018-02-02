@@ -8,7 +8,7 @@ public class PlayerPlane extends GameObject{
 	private Vec2d movement = new Vec2d(0,0);
 	private Vec2d bearing = new Vec2d(0,0.25);
 	private double polAngle = this.getPolarDirection()[1];
-	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.25),new Vec2d(1,-1),1,0);
+	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.25),new Vec2d(1,-1),1,1);
 	private static GfxPlane sprite = new GfxPlane(hitBox.getLoc());
 	public PlayerPlane(GameEngine gEng) {
 		super(sprite,hitBox,gEng);

@@ -1,4 +1,9 @@
+/.DS_Store
+/data/
+/edu/
+/javazoom/
 /Box.class
+/GameAsteroid.class
 /GameEngine.class
 /GameEngineTest.class
 /GameEvent$GameEventFlag.class
@@ -30,6 +35,3 @@
 /Sound$1.class
 /Sound.class
 /Vec2d.class
-/edu/
-/javazoom/
-/GameAsteroid.class
