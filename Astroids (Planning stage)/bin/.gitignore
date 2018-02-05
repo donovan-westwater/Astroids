@@ -1,6 +1,9 @@
+/.DS_Store
+/data/
 /edu/
 /javazoom/
 /Box.class
+/GameAsteroid.class
 /GameEngine.class
 /GameEngineTest.class
 /GameEvent$GameEventFlag.class
@@ -11,6 +14,7 @@
 /GameObjectBox.class
 /GameObjectWall.class
 /GfxAmmo.class
+/GfxAstroid.class
 /GfxBox.class
 /GfxCircle.class
 /GfxEngine.class

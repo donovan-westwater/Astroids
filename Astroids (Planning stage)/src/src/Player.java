@@ -1,12 +1,12 @@
 import edu.princeton.cs.algs4.StdDraw;
-
+//Need to add missles, use missles from missle command?
 public class Player {
 	private GameEngine gEng;
 	private int launchPause = 5;
 	private int missileCount = 3;
 	private PlayerPlane actor;
 	private boolean active;
-	//Make seprate game object for physics and GFX!!!
+	
 	
 	
 	
@@ -15,7 +15,6 @@ public class Player {
 		this.actor = new PlayerPlane(gEngine);
 	}
 	public void initializePlayer() {
-		// 
 		int a = 1;
 		this.gEng.add(actor);
 	}
