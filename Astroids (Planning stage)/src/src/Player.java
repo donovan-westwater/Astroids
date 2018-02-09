@@ -64,7 +64,7 @@ public class Player {
 			}
 			if (launchPause > 5) launchPause = 5;
 			if(actor.gEvents.contains(GameEvent.GameEventFlag.TOUCH)) {
-				System.out.print(" TEST ");
+				//Update State goes here? (Most likely goes to gameMaster, try that first)
 			}
 
 		}

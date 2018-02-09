@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.lang.*;
 public class PlayerPlane extends GameObject{
 	//need to add momentium to this section
+	//CODE FOR DEATH VIA ASTEROID GOES HERE
 	
 	
 	private Vec2d spawn = new Vec2d(0,0);
@@ -62,7 +63,15 @@ public class PlayerPlane extends GameObject{
 		this.getpObj().getDir().setY(bearing.getY());
 		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
-	public void update() {
+	@Override
+	public void updateEvents() {
+		if (gEvents == null) return;
+		for (GameEvent ge : gEvents) {
+			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
+		        //DEATH CODE GOES HERE!
+			}
+		}
+		gEvents.clear();
 		
 	}
 }
