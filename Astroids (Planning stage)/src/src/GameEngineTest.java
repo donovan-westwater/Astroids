@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.StdDraw;
 
 public class GameEngineTest {
-	
+	//Collsion needs some work
 	public static void drawVector(Vec2d vec){
 		StdDraw.line(0.0, 0.0, vec.getX(), vec.getY());
 	}

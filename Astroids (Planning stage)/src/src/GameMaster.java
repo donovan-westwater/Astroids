@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import edu.princeton.cs.algs4.StdAudio;
 import edu.princeton.cs.algs4.StdDraw;
 import java.awt.Font;
-
+//Add asteroid killing player and points for killing asteroids
 public class GameMaster {
 	private GfxUI screen;
 	private GfxUI replaytext;

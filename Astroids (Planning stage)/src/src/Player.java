@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.StdDraw;
 //Need to add missles, use missles from missle command?
+
 public class Player {
 	private GameEngine gEng;
 	private int launchPause = 5;
@@ -18,6 +19,7 @@ public class Player {
 		int a = 1;
 		this.gEng.add(actor);
 	}
+	
 	
 	public void update () {
 		// in this game you can launch a missle by 
@@ -61,6 +63,9 @@ public class Player {
 				
 			}
 			if (launchPause > 5) launchPause = 5;
+			if(actor.gEvents.contains(GameEvent.GameEventFlag.TOUCH)) {
+				System.out.print(" TEST ");
+			}
 
 		}
 		
