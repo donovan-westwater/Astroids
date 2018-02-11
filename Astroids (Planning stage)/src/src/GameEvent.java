@@ -9,7 +9,7 @@ public class GameEvent {
 	}
 
 	public enum GameEventFlag {
-		BOOM, MISS, TOUCH;
+		DEATH,BOOM, MISS, TOUCH;
 	}
 	
 	public GameEvent(GameEventFlag flag) {

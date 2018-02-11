@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.lang.*;
+
 public class PlayerPlane extends GameObject{
 	//need to add momentium to this section
 	//CODE FOR DEATH VIA ASTEROID GOES HERE
@@ -69,6 +70,9 @@ public class PlayerPlane extends GameObject{
 		for (GameEvent ge : gEvents) {
 			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
 		        //DEATH CODE GOES HERE!
+				this.getgEng().killPlayer();
+				this.setActive(false);
+				this.getgEng().getGameMaster().setDeath(true);
 			}
 		}
 		gEvents.clear();

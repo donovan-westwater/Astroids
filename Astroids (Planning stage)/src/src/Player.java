@@ -19,6 +19,9 @@ public class Player {
 		int a = 1;
 		this.gEng.add(actor);
 	}
+	public PlayerPlane getActor() {
+		return actor;
+	}
 	
 	
 	public void update () {
