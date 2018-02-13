@@ -5,7 +5,8 @@ public class PlayerPlane extends GameObject{
 	//need to add momentium to this section
 	//CODE FOR DEATH VIA ASTEROID GOES HERE
 	
-	
+	private int maxMissiles = 2;
+	private double missileSpeed = 0.25;
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
 	private Vec2d bearing = new Vec2d(0,0.25);
@@ -64,6 +65,29 @@ public class PlayerPlane extends GameObject{
 		this.getpObj().getDir().setY(bearing.getY());
 		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
+	//WIP: Launches missile
+	public void fireMissile(Vec2d target) {
+		if (!super.isActive()) return;
+		if (maxMissiles > 0) {
+			maxMissiles -= 1;
+			Vec2d start = this.getPhysicsPos();
+			Vec2d dir = Vec2d.subtract(target, start);
+			dir = Vec2d.getUnitVec(dir);
+			dir = Vec2d.scaledVector(dir, missileSpeed);
+			double mass = 10;
+			double size = 0.2;
+
+			PlayerMissle pM = new PlayerMissle(new GfxCircle(size),
+					new PhyBox(dir, start, 0.50, mass), 
+					this.getgEng(),
+					target);
+			pM.getpObj().setNonsolid(true);
+			this.getgEng().addDuringFrame(pM);
+			System.out.println("Added missle");
+
+		}
+	}
+	
 	@Override
 	public void updateEvents() {
 		if (gEvents == null) return;

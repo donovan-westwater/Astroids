@@ -22,7 +22,7 @@ public class Player {
 	public PlayerPlane getActor() {
 		return actor;
 	}
-	
+
 	
 	public void update () {
 		// in this game you can launch a missle by 
@@ -57,11 +57,8 @@ public class Player {
 				System.out.println("rotate right");			
 				launchPause = 5;
 			}
-			if(StdDraw.isKeyPressed(86)) {
-				System.out.println("my physical direction is");
-				System.out.println(actor.getpObj().getDir().getX()+" "+actor.getpObj().getDir().getY());
-				System.out.println("My bearing is: ");
-				System.out.println(actor.getBearing().getX()+" "+actor.getBearing().getY());
+			if(StdDraw.isKeyPressed(32)) {
+				actor.fireMissile(actor.getBearing());
 				launchPause = 5;
 				
 			}
