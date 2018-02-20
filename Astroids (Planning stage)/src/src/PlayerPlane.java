@@ -70,8 +70,10 @@ public class PlayerPlane extends GameObject{
 		if (!super.isActive()) return;
 		if (maxMissiles > 0) {
 			maxMissiles -= 1;
+			
 			double x = this.getPhysicsPos().getX()+this.getBearing().getX();
-			double y = this.getPhysicsPos().getY()+this.getBearing().getY();
+			double y = (this.getBearing().getY() == 0.25)? 0.033 : this.getPhysicsPos().getY()+this.getBearing().getY();
+			
 			Vec2d start = new Vec2d(x,y);
 			
 			//Vec2d dir = Vec2d.subtract(target, start);
@@ -83,8 +85,8 @@ public class PlayerPlane extends GameObject{
 			PlayerMissle pM = new PlayerMissle(new GfxCircle(size),
 					new PhyBox(dir, start, 0.50, mass), 
 					this.getgEng(),
-					dir);
-			pM.getpObj().setNonsolid(false);
+					Vec2d.add(start,Vec2d.scaledVector(dir, 5)));
+			pM.getpObj().setNonsolid(true);
 			this.getgEng().addDuringFrame(pM);
 			System.out.println("Added missle");
 
