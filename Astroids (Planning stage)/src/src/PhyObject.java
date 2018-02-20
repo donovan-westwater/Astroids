@@ -7,6 +7,7 @@ public class PhyObject {
 		this.loc =loc;
 	}
 	
+	
 	private Vec2d dir;
 	public Vec2d getDir() {
 		return dir;

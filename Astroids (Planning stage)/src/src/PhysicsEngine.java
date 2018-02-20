@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 import edu.princeton.cs.algs4.StdDraw;
-//Need to edit physics engine to allow wrapping 
+//Need to add a method to detect what object is being collided
+//Should most likely not go here, this only deals with physics objects
+//Game engine isnt equiped to allow this however, so send flag from here to let engine process
 public class PhysicsEngine {
 	private double minX;
 	private double maxX;
@@ -45,6 +47,9 @@ public class PhysicsEngine {
 					// System.out.println("Checking for collison.");
 					PhysicsEvent collison = PhyObject.collide(obj, otherObj);
 					if (collison != null && collison.getFlag() == PhysicsEvent.EventFlag.TOUCH) {
+						obj.getgObj().setLast(otherObj.getgObj());
+						otherObj.gObj.setLast(obj.getgObj());
+						
 						processCollison(collison);	
 					}
 				}

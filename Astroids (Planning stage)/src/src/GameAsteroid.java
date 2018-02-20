@@ -10,5 +10,19 @@ private static GfxAstroid sprite = new GfxAstroid(hitbox.getLoc());
 		this.getgEng().add(this);
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public void updateEvents() {
+		if (gEvents == null) return;
+		for (GameEvent ge : gEvents) {
+			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
+		        if(this.getlastHit() instanceof PlayerMissle) {
+		        	this.setActive(false);
+		        }
+				
+				//add score here!
+			}
+		}
+		gEvents.clear();
+		
+	}
 }

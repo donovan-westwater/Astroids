@@ -93,7 +93,6 @@ public class PlayerPlane extends GameObject{
 		if (gEvents == null) return;
 		for (GameEvent ge : gEvents) {
 			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
-		        //DEATH CODE GOES HERE!
 				this.getgEng().killPlayer();
 				this.setActive(false);
 				this.getgEng().getGameMaster().setDeath(true);

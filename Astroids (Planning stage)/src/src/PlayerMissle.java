@@ -20,6 +20,7 @@ public class PlayerMissle extends GameObject{
 		
 	}
 	//This should be a straight line, coming off the space ship (Player)
+	
 
 	public void update () {
 		// we don't need to move, cause phyeng does that
