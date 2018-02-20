@@ -66,12 +66,15 @@ public class PlayerPlane extends GameObject{
 		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
 	//WIP: Launches missile
-	public void fireMissile(Vec2d target) {
+	public void fireMissile(Vec2d dir) {
 		if (!super.isActive()) return;
 		if (maxMissiles > 0) {
 			maxMissiles -= 1;
-			Vec2d start = this.getPhysicsPos();
-			Vec2d dir = Vec2d.subtract(target, start);
+			double x = this.getPhysicsPos().getX()+this.getBearing().getX();
+			double y = this.getPhysicsPos().getY()+this.getBearing().getY();
+			Vec2d start = new Vec2d(x,y);
+			
+			//Vec2d dir = Vec2d.subtract(target, start);
 			dir = Vec2d.getUnitVec(dir);
 			dir = Vec2d.scaledVector(dir, missileSpeed);
 			double mass = 10;
@@ -80,8 +83,8 @@ public class PlayerPlane extends GameObject{
 			PlayerMissle pM = new PlayerMissle(new GfxCircle(size),
 					new PhyBox(dir, start, 0.50, mass), 
 					this.getgEng(),
-					target);
-			pM.getpObj().setNonsolid(true);
+					dir);
+			pM.getpObj().setNonsolid(false);
 			this.getgEng().addDuringFrame(pM);
 			System.out.println("Added missle");
 
@@ -93,9 +96,11 @@ public class PlayerPlane extends GameObject{
 		if (gEvents == null) return;
 		for (GameEvent ge : gEvents) {
 			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
+			if(this.getlastHit() instanceof GameAsteroid) {
 				this.getgEng().killPlayer();
 				this.setActive(false);
 				this.getgEng().getGameMaster().setDeath(true);
+			}
 			}
 		}
 		gEvents.clear();

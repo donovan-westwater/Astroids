@@ -30,6 +30,7 @@ public class PlayerMissle extends GameObject{
 
 		// we need to see if we reached destination
 		// we need to see if we hit some something first
+		
 		Vec2d currentPosition = this.getPhysicsPos();
 		Vec2d subbedVec = Vec2d.subtract(currentPosition, mytarget);
 		
@@ -40,7 +41,8 @@ public class PlayerMissle extends GameObject{
 			System.out.println("Hey, I went boom!");
 			gE.lowerMissileCount();
 		}
-	}
+		}
+	
 	public void remove() {
 		
 	}
