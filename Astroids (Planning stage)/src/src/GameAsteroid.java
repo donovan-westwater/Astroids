@@ -17,6 +17,9 @@ private static GfxAstroid sprite = new GfxAstroid(hitbox.getLoc());
 			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
 		        if(this.getlastHit() instanceof PlayerMissle) {
 		        	this.setActive(false);
+		        	this.getgEng().removeDuringFrame(this);
+		        	this.remove();
+		        	
 		        }
 				
 				//add score here!

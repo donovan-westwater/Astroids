@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdDraw;
 
 public class PlayerMissle extends GameObject{
 	private Vec2d mytarget;
-	private double triggerDist = 0.1;
+	private double triggerDist = 25;
 	
 	private PhyBox p;
 	private GfxObject g;
@@ -21,25 +21,41 @@ public class PlayerMissle extends GameObject{
 	}
 	//This should be a straight line, coming off the space ship (Player)
 	
-
+	//add counter to self denonate after launch DONE
+	//Find a way to remove missle when touching player before physics engine updates
+	//OR find a design method to find the amound of missles and distnace of missle that wont jossle player!
+	//Solidfy after a few frames in update! (TRY THIS OUT)
 	public void update () {
+		triggerDist -= 1;
+		if(this.getpObj().getFrameTime() > 1) {
+			this.getpObj().setNonsolid(false);
+		}
+		if(triggerDist <= 0) {
+			this.remove();
+			gE.removeDuringFrame(this);
+		}
 		// we don't need to move, cause phyeng does that
 		// we do need to add any fx that we want
 		
 		//gE.addDuringFrame(t); #Use this for animation/ updating graphical postion of missle
 
 		// we need to see if we reached destination
-		// we need to see if we hit some something first
+		// we need to see if we hit some something first Old coder!:distSqrd < (triggerDist*triggerDist)
 		
-		Vec2d currentPosition = this.getPhysicsPos();
-		Vec2d subbedVec = Vec2d.subtract(currentPosition, mytarget);
+		//Vec2d currentPosition = this.getPhysicsPos();
+		//Vec2d subbedVec = Vec2d.subtract(currentPosition, mytarget);
 		
-		double distSqrd = Vec2d.dotAB(subbedVec, subbedVec);
-		if (distSqrd < (triggerDist*triggerDist)) {
+		//double distSqrd = Vec2d.dotAB(subbedVec, subbedVec);
+		if (this.getlastHit() instanceof GameAsteroid) {
+			this.getgEng().getGameMaster().addScore(100);
 			this.remove();
 			gE.removeDuringFrame(this);
 			System.out.println("Hey, I went boom!");
-			gE.lowerMissileCount();
+			//gE.lowerMissileCount();
+			
+		}else if(this.getlastHit() instanceof PlayerPlane) {
+			this.remove();
+			gE.removeDuringFrame(this);
 		}
 		}
 	

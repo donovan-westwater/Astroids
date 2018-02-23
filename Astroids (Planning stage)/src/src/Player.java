@@ -59,7 +59,7 @@ public class Player {
 			}
 			if(StdDraw.isKeyPressed(32)) {
 				actor.fireMissile(actor.getBearing());
-				launchPause = 0;
+				launchPause = 5;
 				
 			}
 			if (launchPause > 5) launchPause = 5;
