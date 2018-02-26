@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.StdDraw;
 
 public class GameEngineTest {
-	
+	//Collsion needs some work
 	public static void drawVector(Vec2d vec){
 		StdDraw.line(0.0, 0.0, vec.getX(), vec.getY());
 	}
@@ -19,6 +19,7 @@ public class GameEngineTest {
 		GameEngine gEngine = new GameEngine(minX, minY, maxX, maxY);
 		GameMaster joke = new GameMaster(gEngine);
 		GameObjectBox binding = new GameObjectBox(drawing,test,gEngine);
+		GameAsteroid test1 = new GameAsteroid(gEngine);
 		//gEngine.add(binding);
 		
 		while(true) {

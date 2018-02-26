@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import edu.princeton.cs.algs4.StdAudio;
 import edu.princeton.cs.algs4.StdDraw;
 import java.awt.Font;
-
+//Add asteroid killing player and points for killing asteroids
 public class GameMaster {
 	private GfxUI screen;
 	private GfxUI replaytext;
@@ -18,7 +18,7 @@ public class GameMaster {
 	private ArrayList<GameObject> phase1;
 	private ArrayList<GameObject> phase2;
 	private ArrayList<GameObject> phase3;
-	private ArrayList<GameObject> cities;
+	private boolean playerDead = false;
 	
 	public GameMaster(GameEngine tim){
 		screen = new GfxUI(new Vec2d(0,0));
@@ -30,13 +30,16 @@ public class GameMaster {
 		replaytext.setMsg("");
 		scoretext.setMsg("");
 	}
+	public void setDeath(boolean truth) {
+		playerDead = truth;
+	}
 	public void update(){
 		if(StdDraw.isKeyPressed(27) && press_amount == 0){
 			changePhase(2);
 			press_amount += 1;
 			this.startPhase2();
 		}
-		boolean anyCitiesLeft = false;
+		
 		
 		
 		if (phase == 1) {
@@ -46,9 +49,9 @@ public class GameMaster {
 			StdDraw.setFont();
 			scoretext.setMsg("SCORE: " + score);
 		}
-		if (!anyCitiesLeft && phase == 2) {
-			//this.startPhase3();
-			//this.changePhase(3);
+		if (playerDead && phase == 2) {
+			this.startPhase3();
+			this.changePhase(3);
 		}
 		if (phase == 3) {
 			if(StdDraw.isKeyPressed(88)) {
@@ -57,6 +60,9 @@ public class GameMaster {
 			}
 		}
 	}
+		
+
+	
 	private void startPhase1(){
 		screen.setCenter(new Vec2d(0,0));
 		eng.addUI(screen);
