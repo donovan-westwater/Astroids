@@ -40,13 +40,13 @@ public class Player {
 				//Vec2d target = new Vec2d(-0.5,0);
 				//actor.move(target);
 				System.out.println("rotate left");
-				launchPause = 5;
+				launchPause = 15;
 
 			}
 			if (StdDraw.isKeyPressed(87)) {
 				// move forward
 				System.out.println("move forward");
-				launchPause = 5;
+				launchPause = 15;
 				actor.move();
 
 			}
@@ -55,14 +55,14 @@ public class Player {
 				//Vec2d target = new Vec2d(0.5,0);
 				//actor.move(target);
 				System.out.println("rotate right");			
-				launchPause = 5;
+				launchPause = 15;
 			}
 			if(StdDraw.isKeyPressed(32)) {
 				actor.fireMissile(actor.getBearing());
-				launchPause = 5;
+				launchPause = 15;
 				
 			}
-			if (launchPause > 5) launchPause = 5;
+			if (launchPause > 15) launchPause = 15;
 			if(actor.gEvents.contains(GameEvent.GameEventFlag.TOUCH)) {
 				//Update State goes here? (Most likely goes to gameMaster, try that first)
 			}
