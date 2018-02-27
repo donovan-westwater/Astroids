@@ -20,6 +20,7 @@ private static GfxAstroid sprite = new GfxAstroid(hitbox.getLoc());
 		        	this.getgEng().removeDuringFrame(this);
 		        	this.remove();
 		        	
+		        	
 		        }
 				
 				//add score here!

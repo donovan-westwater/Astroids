@@ -65,7 +65,8 @@ public class PlayerPlane extends GameObject{
 		this.getpObj().getDir().setY(bearing.getY());
 		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
-	//WIP: Launches missile
+	//WIP: Launches missile 
+	//ADJUST SPEED OF MISSLE BASED ON BEARING!!!!! above 180 = a below 180 = b (use right as 0 degrees!!!!!)
 	public void fireMissile(Vec2d dir) {
 		if (!super.isActive()) return;
 		if (maxMissiles > 0) {
@@ -79,6 +80,7 @@ public class PlayerPlane extends GameObject{
 			//Vec2d dir = Vec2d.subtract(target, start);
 			dir = Vec2d.getUnitVec(dir);
 			dir = Vec2d.scaledVector(dir, missileSpeed);
+			
 			double mass = 1;
 			double size = 0.2;
 
@@ -105,8 +107,10 @@ public class PlayerPlane extends GameObject{
 		for (GameEvent ge : gEvents) {
 			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
 			if(this.getlastHit() instanceof GameAsteroid) {
-				this.getgEng().killPlayer();
 				this.setActive(false);
+				this.remove();
+				this.getgEng().removeDuringFrame(this);
+				this.getgEng().killPlayer();
 				this.getgEng().getGameMaster().setDeath(true);
 			}
 			}

@@ -31,6 +31,8 @@ public class Player {
 		// shoot another missile
 		// this.test.setGraphicPosition(new Vec2d(0.0, 0.0));
 		// this.test.setMsg(Integer.toString(missileCount));
+		//edit launch pause for a better turning speed
+		//Create a movement pause for the movement sections seperate from launch pause
 		if (launchPause > 0) launchPause -= 1;
 		if (launchPause == 0) {
 			// the missile comes from a "base"
