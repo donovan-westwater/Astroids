@@ -1,17 +1,15 @@
 import java.awt.Color;
 import java.lang.*;
-
 public class PlayerPlane extends GameObject{
-	//need to add momentium to this section
-	//CODE FOR DEATH VIA ASTEROID GOES HERE
+	//Not using bearing for direction
+	//not warning physics engine
 	
-	private int maxMissiles = 5;
-	private double missileSpeed = 0.3;
+	
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
 	private Vec2d bearing = new Vec2d(0,0.25);
 	private double polAngle = this.getPolarDirection()[1];
-	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.25),new Vec2d(1,-1),1,10);
+	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.25),new Vec2d(1,-1),1,0);
 	private static GfxPlane sprite = new GfxPlane(hitBox.getLoc());
 	public PlayerPlane(GameEngine gEng) {
 		super(sprite,hitBox,gEng);
@@ -65,53 +63,7 @@ public class PlayerPlane extends GameObject{
 		this.getpObj().getDir().setY(bearing.getY());
 		System.out.println("Bearing in Move(): "+ this.getBearing().getX()+" "+this.getBearing().getY());
 	}
-	//WIP: Launches missile
-	public void fireMissile(Vec2d dir) {
-		if (!super.isActive()) return;
-		if (maxMissiles > 0) {
-			maxMissiles -= 1;
-			//DOESNT WORK, NEEDS TO BE FIXED!!!!!!!!!! (GOAL: PUT BULLET AHEAD OF SHIP!!!!)
-			double x = this.getPhysicsPos().getX()+this.getBearing().getX();
-			double y = (this.getBearing().getY() == 0.25)? 0.033 : this.getPhysicsPos().getY()+this.getBearing().getY();
-			
-			Vec2d start = this.getPhysicsPos();
-			
-			//Vec2d dir = Vec2d.subtract(target, start);
-			dir = Vec2d.getUnitVec(dir);
-			dir = Vec2d.scaledVector(dir, missileSpeed);
-			double mass = 1;
-			double size = 0.2;
-
-			PlayerMissle pM = new PlayerMissle(new GfxCircle(size),
-					new PhyBox(dir, start, 0.50, mass), 
-					this.getgEng(),
-					Vec2d.add(start,Vec2d.scaledVector(dir,1)));
-			pM.getpObj().setNonsolid(true);
-			this.getgEng().addDuringFrame(pM);
-			System.out.println("Added missle");
-
-		}
-	}
-	//Sets maximum missles
 	public void update() {
-		if(maxMissiles < 5) {
-			maxMissiles += 1;
-		}
-	}
-	
-	@Override
-	public void updateEvents() {
-		if (gEvents == null) return;
-		for (GameEvent ge : gEvents) {
-			if (ge.getFlag() == GameEvent.GameEventFlag.TOUCH) {
-			if(this.getlastHit() instanceof GameAsteroid) {
-				this.getgEng().killPlayer();
-				this.setActive(false);
-				this.getgEng().getGameMaster().setDeath(true);
-			}
-			}
-		}
-		gEvents.clear();
 		
 	}
 }

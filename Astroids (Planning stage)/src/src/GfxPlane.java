@@ -7,11 +7,10 @@ public class GfxPlane extends GfxObject {
 	private double[] xCords = {0,.5,2,2,2.5,2.5};
 	private double[] yCords = {0,0.5,0.5,1,1,0};
 	private Vec2d shift;
-	private double scale = 1;
 	private double gfxBearing = 0;
 	public GfxPlane(Vec2d spawn){
 		this.setGraphicPosition(spawn);
-		col = StdDraw.WHITE;
+		col = StdDraw.RED;
 				/*
 		xCords[0] = shift.getX() - .2;
 		xCords[1] = shift.getX() - .15;
@@ -34,13 +33,6 @@ public class GfxPlane extends GfxObject {
 	}
 	public void addGfxbearing(double bearing) {
 		this.gfxBearing += bearing;
-	}
-	//Detirmines size of the plane
-	public void setScale(double n) {
-		this.scale = n;
-	}
-	public double getScale() {
-		return scale;
 	}
 	//Rotates ship. Intial rotation is from upward postion
 	public void rotate(double angle) {
@@ -83,6 +75,7 @@ public class GfxPlane extends GfxObject {
 		yCords[3] += shift.getY();
 		//Most Recent Addition
 		
+		
 	}//Needs to be able to rotate and draw at the same time!
 	//Trying to find way to not have the coords get reset to the initial shape
 	public void draw(){
@@ -99,8 +92,6 @@ public class GfxPlane extends GfxObject {
 		
 		
 		this.shiftFormat();
-		//SCALE AFTER FORMAT IS CALLED!
-		//this.scalePlane(0.25);
 
 		
 		StdDraw.line(xCords[0], yCords[0], xCords[1], yCords[1]);
@@ -142,9 +133,8 @@ public class GfxPlane extends GfxObject {
 		StdDraw.setYscale(minY, maxY);
 		
 		GfxPlane test = new GfxPlane(new Vec2d(0,0));
-		test.setColor(StdDraw.RED);
 		
-		test.scalePlane(1);
+		test.scalePlane(15);
 		test.setGfxbearing(Math.PI/2);
 		test.draw();
 

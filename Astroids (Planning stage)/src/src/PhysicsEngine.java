@@ -1,16 +1,13 @@
 import java.util.ArrayList;
 
 import edu.princeton.cs.algs4.StdDraw;
-//Need to add a method to detect what object is being collided
-//Should most likely not go here, this only deals with physics objects
-//Game engine isnt equiped to allow this however, so send flag from here to let engine process
+//Need to edit physics engine to allow wrapping 
 public class PhysicsEngine {
 	private double minX;
 	private double maxX;
 	private double minY;
 	private double maxY;
 	private int frame; 
-	private boolean wrapToggle = true;
 
 	private ArrayList<PhyObject> pObjs;
 	
@@ -47,9 +44,6 @@ public class PhysicsEngine {
 					// System.out.println("Checking for collison.");
 					PhysicsEvent collison = PhyObject.collide(obj, otherObj);
 					if (collison != null && collison.getFlag() == PhysicsEvent.EventFlag.TOUCH) {
-						obj.getgObj().setLast(otherObj.getgObj());
-						otherObj.gObj.setLast(obj.getgObj());
-						
 						processCollison(collison);	
 					}
 				}
@@ -62,14 +56,8 @@ public class PhysicsEngine {
 					System.out.println("But we only have phyboxes?");
 				}
 				PhyBox box = (PhyBox) obj;
-				//replace this with if statement using wrap code
-				if(wrapToggle) {
-					this.wrapAroundBounds(box);
-				}else{
 				this.reflectOffBounds(box);
-				}
 				box.setLoc(Vec2d.add(box.getLoc(), box.getDir()));
-				
 				obj.setFrame(frame);
 			}
 		}
@@ -96,29 +84,6 @@ public class PhysicsEngine {
 				// System.out.println("I BOUNCED OFF THE WALL!");
 			}			
 			
-		}
-		
-	}
-	//Should Cause Object to appear on the opposite side of the bounds
-	private void wrapAroundBounds(PhyObject obj){
-		//Checks if object is a physics box
-		if (obj instanceof PhyBox) {
-			PhyBox boxA = (PhyBox) obj;
-			//This deals with horizontal wrapping
-			if (boxA.getLoc().getX() + boxA.getDir().getX() < minX
-					|| boxA.getLoc().getX() + boxA.getDir().getX() > maxX) {
-				Vec2d newLoc = new Vec2d(-boxA.getLoc().getX(),boxA.getLoc().getY());
-				boxA.setLoc(newLoc);
-				System.out.println("I wrapped to: "+boxA.getLoc().getX()+ " "+boxA.getLoc());
-			}
-			//This deals with vertical wrapping
-			if(boxA.getLoc().getY() + boxA.getDir().getY() < minY ||
-					boxA.getLoc().getY() + boxA.getDir().getY() > maxY) {
-				Vec2d newLoc = new Vec2d(boxA.getLoc().getX(),-boxA.getLoc().getY());
-				boxA.setLoc(newLoc);
-				
-			}
-		
 		}
 	}
 
@@ -156,10 +121,8 @@ public class PhysicsEngine {
 				boxB.setDir(newVecB);
 
 				// System.out.println("Before reflect code.");
-				
 				this.reflectOffBounds(boxA);
 				this.reflectOffBounds(boxB);
-				
 				
 				double remainingTime = 1.0 - timeOfCollision;
 				
