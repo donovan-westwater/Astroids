@@ -4,6 +4,7 @@ import edu.princeton.cs.algs4.StdDraw;
 public class Player {
 	private GameEngine gEng;
 	private int launchPause = 5;
+	private int movementPause;
 	private int missileCount = 3;
 	private PlayerPlane actor;
 	private boolean active;
@@ -34,7 +35,8 @@ public class Player {
 		//edit launch pause for a better turning speed
 		//Create a movement pause for the movement sections seperate from launch pause
 		if (launchPause > 0) launchPause -= 1;
-		if (launchPause == 0) {
+		if(movementPause > 0) movementPause -= 1;
+		if (movementPause == 0) {
 			// the missile comes from a "base"
 			// for now the base is the middle screen
 			if (StdDraw.isKeyPressed(65)) {
@@ -42,13 +44,13 @@ public class Player {
 				//Vec2d target = new Vec2d(-0.5,0);
 				//actor.move(target);
 				System.out.println("rotate left");
-				launchPause = 15;
+				movementPause = 5;
 
 			}
 			if (StdDraw.isKeyPressed(87)) {
 				// move forward
 				System.out.println("move forward");
-				launchPause = 15;
+				movementPause = 5;
 				actor.move();
 
 			}
@@ -57,18 +59,24 @@ public class Player {
 				//Vec2d target = new Vec2d(0.5,0);
 				//actor.move(target);
 				System.out.println("rotate right");			
-				launchPause = 15;
+				movementPause = 5;
 			}
+			
+			
+			
+			if(movementPause > 5) movementPause =5;
+			if(actor.gEvents.contains(GameEvent.GameEventFlag.TOUCH)) {
+				//Update State goes here? (Most likely goes to gameMaster, try that first)
+			}
+
+		}
+		if(launchPause == 0) {
+			if (launchPause > 15) launchPause = 15;
 			if(StdDraw.isKeyPressed(32)) {
 				actor.fireMissile(actor.getBearing());
 				launchPause = 15;
 				
 			}
-			if (launchPause > 15) launchPause = 15;
-			if(actor.gEvents.contains(GameEvent.GameEventFlag.TOUCH)) {
-				//Update State goes here? (Most likely goes to gameMaster, try that first)
-			}
-
 		}
 		
 		
