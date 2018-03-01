@@ -2,9 +2,8 @@ import java.awt.Color;
 import java.lang.*;
 
 public class PlayerPlane extends GameObject{
-	//need to add momentium to this section
 	//CODE FOR DEATH VIA ASTEROID GOES HERE
-	
+	//Switch from phybox to phycircle for hitbox (CANT HAPPEN ATM)
 	private int maxMissiles = 5;
 	private double missileSpeed = 0.3;
 	private Vec2d spawn = new Vec2d(0,0);

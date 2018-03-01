@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
 import edu.princeton.cs.algs4.StdDraw;
-
+//change speed to distnaceFromStart, make that statement accurate
 public class PlayerMissle extends GameObject{
 	private Vec2d mytarget;
 	private double triggerDist = 25;
+	private Vec2d start;
+	private double distanceFromStart = 0;
 	
 	private PhyBox p;
 	private GfxObject g;
@@ -17,7 +19,7 @@ public class PlayerMissle extends GameObject{
 		p = phy;
 		g = gfx;
 		gE = gEngine;
-		
+		start = p.getLoc();
 	}
 	//This should be a straight line, coming off the space ship (Player)
 	
@@ -26,9 +28,13 @@ public class PlayerMissle extends GameObject{
 	//OR find a design method to find the amound of missles and distnace of missle that wont jossle player!
 	//Solidfy after a few frames in update! (TRY THIS OUT)
 	public void update () {
+		distanceFromStart += this.getpObj().getDir().length();
+		if(distanceFromStart > 0.5) {
+			this.getpObj().setNonsolid(false);
+		}
 		triggerDist -= 1;
 		if(this.getpObj().getFrameTime() > 1) {
-			this.getpObj().setNonsolid(false);
+			//this.getpObj().setNonsolid(false);
 		}
 		if(triggerDist <= 0) {
 			this.remove();
