@@ -5,12 +5,12 @@ public class PlayerPlane extends GameObject{
 	//CODE FOR DEATH VIA ASTEROID GOES HERE
 	//Switch from phybox to phycircle for hitbox (CANT HAPPEN ATM)
 	private int maxMissiles = 5;
-	private double missileSpeed = 0.3;
+	private double missileSpeed = 0.33;
 	private Vec2d spawn = new Vec2d(0,0);
 	private Vec2d movement = new Vec2d(0,0);
 	private Vec2d bearing = new Vec2d(0,0.25);
 	private double polAngle = this.getPolarDirection()[1];
-	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.25),new Vec2d(1,-1),1,10);
+	private static PhyBox hitBox = new PhyBox(new Vec2d(0,0.15),new Vec2d(1,-1),1,100); //firing breaks down at 0.25
 	private static GfxPlane sprite = new GfxPlane(hitBox.getLoc());
 	public PlayerPlane(GameEngine gEng) {
 		super(sprite,hitBox,gEng);
@@ -79,7 +79,8 @@ public class PlayerPlane extends GameObject{
 			//Vec2d dir = Vec2d.subtract(target, start);
 			dir = Vec2d.getUnitVec(dir);
 			dir = Vec2d.scaledVector(dir, missileSpeed);
-			
+			System.out.println(dir.getX() +" "+dir.getY());
+			dir = Vec2d.add(this.getpObj().getDir(), dir);
 			double mass = 1;
 			double size = 0.2;
 

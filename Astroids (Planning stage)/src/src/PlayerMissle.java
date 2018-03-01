@@ -29,7 +29,7 @@ public class PlayerMissle extends GameObject{
 	//Solidfy after a few frames in update! (TRY THIS OUT)
 	public void update () {
 		distanceFromStart += this.getpObj().getDir().length();
-		if(distanceFromStart > 0.5) {
+		if(distanceFromStart > 1) {
 			this.getpObj().setNonsolid(false);
 		}
 		triggerDist -= 1;
