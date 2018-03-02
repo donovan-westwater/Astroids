@@ -4,6 +4,7 @@ import edu.princeton.cs.algs4.StdAudio;
 import edu.princeton.cs.algs4.StdDraw;
 import java.awt.Font;
 //add asteroid generation system
+// make score adjust to screen world size!
 public class GameMaster {
 	private GfxUI screen;
 	private GfxUI replaytext;
@@ -23,7 +24,7 @@ public class GameMaster {
 	public GameMaster(GameEngine tim){
 		screen = new GfxUI(new Vec2d(0,0));
 		replaytext = new GfxUI(new Vec2d(0, -1.0));
-		scoretext = new GfxUI(new Vec2d(-2.5, 4.5));
+		scoretext = new GfxUI(new Vec2d(-14, 14));
 		eng = tim;
 		eng.setGameMaster(this);
 		this.startPhase1();
@@ -48,6 +49,11 @@ public class GameMaster {
 		if (phase == 2) {
 			StdDraw.setFont();
 			scoretext.setMsg("SCORE: " + score);
+			//if(num <= 5 ) {
+				//This code goes somewhere else, if ran it breaks entire game
+				//GameAsteroid aster = new GameAsteroid(this.getgEng());
+				//num += 1;
+			//}
 		}
 		if (playerDead && phase == 2) {
 			this.startPhase3();
@@ -93,7 +99,7 @@ public class GameMaster {
 			targets[i] = new Vec2d(minX + gutter/2 + targetWidth * i / (targets.length-1), defaultY);
 		}
 		// first object into system draws first
-
+		
 
 		PhyBox b1 = new PhyBox(new Vec2d(0.0, 0.0), targets[0], 0.5, 10000000.0);
 		PhyBox b2 = new PhyBox(new Vec2d(0.0, 0.0), targets[4], 0.5, 20000000.0);

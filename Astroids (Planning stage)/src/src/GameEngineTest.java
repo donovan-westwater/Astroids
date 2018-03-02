@@ -6,10 +6,10 @@ public class GameEngineTest {
 		StdDraw.line(0.0, 0.0, vec.getX(), vec.getY());
 	}
 	public static void main(String[] args) {
-		double minX = -5.0;
-		double minY = -5.0;
-		double maxX = 5.0;
-		double maxY = 5.0;
+		double minX = -15.0;
+		double minY = -15.0;
+		double maxX = 15.0;
+		double maxY = 15.0;
 		PhyBox test = new PhyBox(new Vec2d(0,-0.5),new Vec2d(0,0),1,0);
 		GfxCircle drawing = new GfxCircle(1);
 		
