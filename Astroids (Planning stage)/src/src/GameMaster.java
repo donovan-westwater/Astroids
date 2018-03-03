@@ -49,11 +49,16 @@ public class GameMaster {
 		if (phase == 2) {
 			StdDraw.setFont();
 			scoretext.setMsg("SCORE: " + score);
-			//if(num <= 5 ) {
+			//Trying to setup spawn system [CURRENTLY BROKEN!!!!]
+			/*
+			GameAsteroid test1 = new GameAsteroid(this.eng);
+			if(test1.getNum() <= 5 ) {
 				//This code goes somewhere else, if ran it breaks entire game
-				//GameAsteroid aster = new GameAsteroid(this.getgEng());
-				//num += 1;
-			//}
+				GameAsteroid aster = new GameAsteroid(this.eng);
+				test1.addNum(1);
+				
+			}
+			*/
 		}
 		if (playerDead && phase == 2) {
 			this.startPhase3();
@@ -89,6 +94,8 @@ public class GameMaster {
 		hansolo.initializePlayer();
 
 		Vec2d[] targets = new Vec2d[9];
+		AsteroidSpawner create = new AsteroidSpawner(eng);
+		eng.setSpawner(create);
 		double gutter = 1.0;
 		double maxWidth = Math.abs(maxX - minX);
 		double targetWidth = maxWidth - gutter;

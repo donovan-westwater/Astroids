@@ -19,7 +19,7 @@ public class GameEngineTest {
 		GameEngine gEngine = new GameEngine(minX, minY, maxX, maxY);
 		GameMaster joke = new GameMaster(gEngine);
 		GameObjectBox binding = new GameObjectBox(drawing,test,gEngine);
-		GameAsteroid test1 = new GameAsteroid(gEngine);
+		//GameAsteroid test1 = new GameAsteroid(gEngine);
 		//gEngine.add(binding);
 		
 		while(true) {

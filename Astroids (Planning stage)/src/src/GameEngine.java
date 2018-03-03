@@ -8,6 +8,7 @@ public class GameEngine {
 	private GfxEngine gfxEng;
 	private PhysicsEngine pEng;
 	private Player player;
+	private AsteroidSpawner spawn;
 	private GameMaster game;
 
 	// the individual gfx object and phy objects are stored inside the gameobjects
@@ -31,6 +32,9 @@ public class GameEngine {
 
 	public void setFrame(int frame) {
 		this.frame = frame;
+	}
+	public void setSpawner(AsteroidSpawner n) {
+		spawn = n;
 	}
 
 	// Public 
@@ -100,6 +104,7 @@ public class GameEngine {
 	private void updateInput() {
 		if (game != null)game.update();
 		if (player != null) player.update();
+		if(spawn != null) (spawn).update();
 		
 	}
 	private void updateDraw() {
@@ -126,6 +131,9 @@ public class GameEngine {
 
 	public void lowerMissileCount() {
 		player.setMissileCount(player.getMissileCount() - 1);
+	}
+	public void lowerNumAsteroids() {
+		
 	}
 
 	public Player getPlayer() {
