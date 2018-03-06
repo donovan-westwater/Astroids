@@ -7,11 +7,12 @@ public class AsteroidSpawner {
 		gEng = eng;
 	}
 	public void spawn() {
-		if(num < 1) {
+		if(num < 8) {
 			GameAsteroid ast = new GameAsteroid(gEng);
 			//ast.randSpawn();
 			this.gEng.addDuringFrame(ast);
 			System.out.println("spawned?");
+			System.out.print(num+" ");
 			num += 1;
 		}
 	}
@@ -33,6 +34,7 @@ public class AsteroidSpawner {
 
 	public void update() {
 		this.spawn();
+		System.out.println("After spawn update num is " + num);
 		this.checkDead();
 		// TODO Auto-generated method stub
 		
