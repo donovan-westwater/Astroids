@@ -44,7 +44,7 @@ public class GameMaster {
 		
 		
 		if (phase == 1) {
-			screen.setMsg("MISSLE COMMAND!: PRESS 'ESCAPE' TO START!");
+			screen.setMsg("ASTEROIDS!: PRESS 'ESCAPE' TO START!");
 		}
 		if (phase == 2) {
 			StdDraw.setFont();
