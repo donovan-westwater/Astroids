@@ -7,7 +7,7 @@ public class AsteroidSpawner {
 		gEng = eng;
 	}
 	public void spawn() {
-		if(num < 8) {
+		if(num < 2) {
 			GameAsteroid ast = new GameAsteroid(gEng);
 			//ast.randSpawn();
 			this.gEng.addDuringFrame(ast);
@@ -27,7 +27,7 @@ public class AsteroidSpawner {
 		}
 		//Should respawn asteroids but doesnt work atm [FIX ME]
 		if(count < num) {
-			//num -= 1;
+			num -= 1;
 		}
 		//System.out.println("THE NUMBER IS: "+num);
 	}

@@ -24,7 +24,7 @@ public class GameMaster {
 	public GameMaster(GameEngine tim){
 		screen = new GfxUI(new Vec2d(0,0));
 		replaytext = new GfxUI(new Vec2d(0, -1.0));
-		scoretext = new GfxUI(new Vec2d(-14, 14));
+		scoretext = new GfxUI(new Vec2d(-13, 13));
 		eng = tim;
 		eng.setGameMaster(this);
 		this.startPhase1();
