@@ -19,14 +19,28 @@ public class GameAsteroid extends GameObject {
 		// TODO Auto-generated constructor stub
 	}
 	public void randSpawn() {
+		//Make this a project constant in gameEngine
 		double minX= -15;
 		double minY = -15;
 		double maxY = 15;
 		double maxX = 15;
-		double randX = (Math.random() - 0.5);
-		 randX = (randX > 0) ? randX + (maxX-1) : randX + (minX+1); 
-		double randY = Math.random()-0.5;
-		 randY = (randY > 0) ? randY + (maxY-1) : randY + (minY+1);
+		//Detrimines rand spawn (spawns at the edge of the map)
+		double randX;
+		double randY;
+		double quad = Math.random() - 0.5;
+		if(quad > 0.25) {
+			randY = maxY -1 ;
+			randX = (30*Math.random()) - 15;
+		}else if(quad > 0 && 0.25 > quad) {
+			randX = maxX - 1;
+			randY = (30*Math.random()) - 15;
+		}else if(quad > -0.25 && 0.25 > quad) {
+			randY = minY + 1;
+			randX = (30*Math.random()) - 15;
+		}else {
+			randX = minX + 1;
+			randY = (30*Math.random()) - 15;
+		}
 		 Vec2d loc = new Vec2d(randX,randY);
 		this.getpObj().setLoc(loc);
 		
